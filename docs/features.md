@@ -140,7 +140,7 @@ Batch 1 canvas: https://claude.ai/artifact/D3uGzGLt9KQJD98PM9vMvh
 |---|---|---|
 | 1. Desk and inbox | Shell and navigation, member search (S1), Today (S2), class roster (S3), member profile (S6) with pass actions (S7), inbox (S16) | The screens used every hour. If these are wrong, nothing else matters. **Drawn, awaiting validation.** |
 | 2. Member | Timetable (M1), book and buy (M3, M4), my bookings and passes (M5, M6), sign-in (M2) | The other half of the daily loop. Phone first. |
-| 3. Set-up | Schedule (S4, S5), catalog (S8), desk sale (S9), products and stock (S17) | What makes the week bookable and sellable. |
+| 3. Set-up | Schedule (S4, S5), catalog (S8), desk sale (S9), products and stock (S17). **Schedule, class edit form, desk sale and products list drawn early, on the Batch 1 canvas, awaiting validation.** Still to draw: class types, passes, subscriptions, promotion codes. | What makes the week bookable and sellable. |
 | 4. Month end | Money (S10), payroll (S11), reports (S12), staff (S13), settings (S14), teacher view (S15) | Used weekly or monthly. |
 
 Development starts on a batch only once its designs are validated.

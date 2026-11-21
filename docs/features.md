@@ -54,6 +54,7 @@ Three surfaces. `S` = staff back office, `M` = member web, `P` = platform (no sc
 | S15 | **Teacher view** | A teacher sees their own classes and rosters, and marks attendance. Phone first. | J2 | Used |
 | S16 | **Inbox** | One shared queue for member requests. Emails to the studio address arrive in it and are answered from it. Requests from the desk, phone, WhatsApp and Instagram are logged by hand in a few seconds. Each request has an owner, a status (open, waiting, done) and its age; open requests older than 24 hours show on Today. The member's passes and bookings sit beside the conversation, so pause, extend, cancel and credit back (S7) are done without leaving it. Saved replies. Notes for staff. | J4 | Locked by plan |
 | S17 | **Products and stock** | Merch sold at the desk. A product has a name, a price, a tax rate and a number in stock; sizes are separate products. A sale takes one off, a refund puts it back, staff correct the count with a reason. A product at zero can still be sold after a confirmation. Sales show on the member's purchases and invoices and as their own line in the revenue report. | J8 | Lightly used (one webshop item) |
+| S18 | **Establishments and rooms** | A studio has one or more establishments (addresses), each with one or more rooms. Every class is in one room of one establishment. The schedule and Today show one establishment at a time; with a single establishment the choice is hidden. Decided 21 Nov 2026. | J5 | Used (Venues) |
 
 ### Member web
 
@@ -92,7 +93,7 @@ Decided out because TUBA does not use it, or can run a week without it.
 | AI front desk, owner copilot, MCP server | The differentiator, but not what blocks leaving BSport. Second release. |
 | Native white-label app | Web first. See D1. |
 | Spot and apparatus booking (pick your reformer) | TUBA's BSport plan has one number, "total spots". Second release. |
-| Multi-studio tenancy, platform master admin, take rates | One studio. Built when studio two signs. |
+| Several studios as separate customers, platform master admin, take rates | One studio as customer. Built when studio two signs. Several establishments inside one studio are in V1 (S18). |
 | Website builder, on-demand video, livestream | Not used. |
 | Gift cards, selling merch online, packs, instalments, expenses, purchase orders, barcodes | Not used. Merch at the desk with stock is in V1 (S17), decided 21 Nov 2026. |
 | Appointments / private sessions | One service, lightly used. See D4. |
@@ -127,6 +128,9 @@ Each one changes scope or design. Recommendation given where there is a basis fo
 | D12 | May staff book a waitlisted member over capacity at any time, or only when a spot is free? | Assumed: any time, after a confirmation. |
 | D13 | Merch at the desk only, or also on the member booking site? | Desk only. |
 | D14 | Keep the one-tap "Replace for this class" on the roster, or change teachers only through "Edit class"? | Keep it. |
+| D15 | Several establishments: included for every studio, or a higher pricing tier? Albert, 21 Nov: not decided yet. | Build it for everyone; a tier only limits how many a studio may create, so the decision can wait. |
+| D16 | With several establishments: are passes valid everywhere or per establishment, and do front desk staff see only their own? | Unknown. Assumed: passes valid everywhere, staff see all. |
+| D17 | How many establishments and rooms does TUBA have today? | Unknown. |
 
 ---
 

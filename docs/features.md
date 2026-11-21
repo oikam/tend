@@ -1,6 +1,6 @@
 # Tend — feature definition, V1
 
-**Status:** draft 2, for Albert to validate · **Date:** 2026-11-21
+**Status:** draft 3, for Albert to validate · **Date:** 2026-11-21
 **Inputs:** Orvys `product-spec.md`, `bsport-inventory.md` (walk of TUBA's live back office, 20 Nov 2026), `admin-ux-analysis.md` (jobs J1–J8).
 
 This is the only planning document for now. Order of work: **features (this file) → designs → validation → development.** Nothing is built before its design is validated.
@@ -39,20 +39,21 @@ Three surfaces. `S` = staff back office, `M` = member web, `P` = platform (no sc
 |---|---|---|---|---|
 | S1 | **Member search** | Search bar in the header on every page: name, email, phone. Opens the member. Creates the member when there is no match. | J1 | Used |
 | S2 | **Today** | Landing page. The day's classes as rosters with fill. A short "needs attention" list: class with no teacher, failed payments, passes that did not renew. | J2, J7 | Used (Home, Calendar) |
-| S3 | **Class roster** | Attendees with the pass used and credits left (3/8). Check in, no-show, add a walk-in, cancel a booking with or without giving the credit back, waitlist. | J2, J1 | Used |
+| S3 | **Class roster** | Attendees with the pass used; no credits shown. Each member is Present or Absent, starting from the studio default; members still Absent when the roll call is confirmed are no-shows. Present and Absent counts appear only after the roll call. The waitlist sits under the booked list and shows only when the class is full: add, remove, book. A second view lists members no longer coming (cancelled, or removed from the waitlist). Edit the class, replace the teacher for this class, and per member: open profile, sell, email or call, move, note for the teacher, cancel with or without the credit. | J2, J1 | Used |
 | S4 | **Schedule** | Week and day calendar. Create a class, one-off or recurring. Edit this class or the series. Move or cancel a class, with the members affected shown first. | J5 | Used |
 | S5 | **Teacher cover** | Put a substitute on one class. The usual teacher stays on the series. Payroll follows who taught. | J3 | Used (done as "change teacher") |
 | S6 | **Member profile** | One page: contact, active passes and subscriptions, next bookings, past bookings, purchases and invoices, notes. Sell and Book always in reach. | J1, J4 | Used |
 | S7 | **Pass actions** | Pause, extend, cancel (now or at period end), give a credit back. Each asks for a reason and is recorded with who did it. | J4 | Used |
 | S8 | **Catalog** | Class types (name, duration, capacity, booking window, cancellation deadline, which passes cover it). Passes (credits or unlimited, validity, price, tax, new clients only). Subscriptions (monthly price, renewal, commitment). Promotion codes. | — | Used |
-| S9 | **Desk sale** | Sell a pass or subscription to a member: charge their saved card, send a payment link, or record cash / transfer / terminal. | J1, J8 | Used |
+| S9 | **Desk sale** | Sell a pass, a subscription or a product to a member: charge their saved card, send a payment link, or record cash / transfer / terminal. Reached from the profile, the roster row and the booking search. | J1, J8 | Used |
 | S10 | **Money** | Payments list, invoices, refunds with a reason, failed payments, payouts. Monthly export for the accountant. | J8 | Used |
 | S11 | **Payroll** | Rate per teacher per class type. Monthly run from classes taught, substitutes included. Export. | J8 | Used |
 | S12 | **Reports** | Four only: revenue by product, bookings and fill by class, active members and subscriptions, unused credits. CSV export. | J8 | Used (subset of 30+) |
 | S13 | **Staff and roles** | Invite by email. Four roles: Owner, Manager, Front desk, Teacher. Role change in a dialog; Owner changes are confirmed. | J6 | Used |
-| S14 | **Settings** | One page each for: studio details, rooms, booking rules, waitlist, invoices and tax, messages. | — | Used (22 pages there) |
+| S14 | **Settings** | One page each for: studio details, rooms, booking rules (including whether members start as Absent or Present), waitlist, invoices and tax, messages. | — | Used (22 pages there) |
 | S15 | **Teacher view** | A teacher sees their own classes and rosters, and marks attendance. Phone first. | J2 | Used |
 | S16 | **Inbox** | One shared queue for member requests. Emails to the studio address arrive in it and are answered from it. Requests from the desk, phone, WhatsApp and Instagram are logged by hand in a few seconds. Each request has an owner, a status (open, waiting, done) and its age; open requests older than 24 hours show on Today. The member's passes and bookings sit beside the conversation, so pause, extend, cancel and credit back (S7) are done without leaving it. Saved replies. Notes for staff. | J4 | Locked by plan |
+| S17 | **Products and stock** | Merch sold at the desk. A product has a name, a price, a tax rate and a number in stock; sizes are separate products. A sale takes one off, a refund puts it back, staff correct the count with a reason. A product at zero can still be sold after a confirmation. Sales show on the member's purchases and invoices and as their own line in the revenue report. | J8 | Lightly used (one webshop item) |
 
 ### Member web
 
@@ -71,7 +72,7 @@ One responsive web app on the studio's address. No native app in V1 (see open de
 
 | # | Feature | What it does |
 |---|---|---|
-| P1 | **Booking rules** | Booking window, cut-off, cancellation deadline, late-cancel penalty, no double booking, pass eligibility, waitlist promotion. One set of rules for staff and members. |
+| P1 | **Booking rules** | Booking window, cut-off, cancellation deadline, late-cancel penalty, no double booking, pass eligibility, waitlist promotion. No booking without a pass that covers the class: at the desk, staff sell first, then book. A credit is taken when the class is booked and returned on a cancel in time. One set of rules for staff and members. |
 | P2 | **Payments** | Card payments, recurring subscription billing, retries on failure, booking block after repeated failure, refunds. |
 | P3 | **Invoices** | Sequential numbered invoices with VAT, credit notes on refund. |
 | P4 | **Messages** | Outgoing email only. About 12 messages, not BSport's 63: account, booking confirmed / cancelled / reminder, waitlist offer, class cancelled or moved, receipt, payment failed, pass expiring, renewal. |
@@ -93,7 +94,7 @@ Decided out because TUBA does not use it, or can run a week without it.
 | Spot and apparatus booking (pick your reformer) | TUBA's BSport plan has one number, "total spots". Second release. |
 | Multi-studio tenancy, platform master admin, take rates | One studio. Built when studio two signs. |
 | Website builder, on-demand video, livestream | Not used. |
-| Gift cards, webshop, packs, instalments, expenses | Not used or one item. |
+| Gift cards, selling merch online, packs, instalments, expenses, purchase orders, barcodes | Not used. Merch at the desk with stock is in V1 (S17), decided 21 Nov 2026. |
 | Appointments / private sessions | One service, lightly used. See D4. |
 | Marketing: campaigns, segments, automations, referrals | Two workflows active. See D5. |
 | WhatsApp, Instagram and SMS connected to the inbox; push | The inbox (S16) receives email and takes the other channels as hand-logged requests. Connecting WhatsApp or Instagram needs Meta business accounts and approval. See D10. |
@@ -123,6 +124,9 @@ Each one changes scope or design. Recommendation given where there is a basis fo
 | D10 | Inbox channels: is email plus hand-logging enough for V1, or must WhatsApp messages arrive in the inbox by themselves? | Email plus hand-logging. WhatsApp connected is the first addition after the switch. Unknown: how the volume splits across the four channels today. |
 | D11 | Which address do members write to today, and can its mail be forwarded to Tend? | Unknown. Decides how P4b is set up. |
 | D9 | Late-cancel penalty at TUBA: credit lost, a fee, or both? No-show the same? | Unknown. Decides P1 and the M5 cancel screen. |
+| D12 | May staff book a waitlisted member over capacity at any time, or only when a spot is free? | Assumed: any time, after a confirmation. |
+| D13 | Merch at the desk only, or also on the member booking site? | Desk only. |
+| D14 | Keep the one-tap "Replace for this class" on the roster, or change teachers only through "Edit class"? | Keep it. |
 
 ---
 
@@ -136,7 +140,7 @@ Batch 1 canvas: https://claude.ai/artifact/D3uGzGLt9KQJD98PM9vMvh
 |---|---|---|
 | 1. Desk and inbox | Shell and navigation, member search (S1), Today (S2), class roster (S3), member profile (S6) with pass actions (S7), inbox (S16) | The screens used every hour. If these are wrong, nothing else matters. **Drawn, awaiting validation.** |
 | 2. Member | Timetable (M1), book and buy (M3, M4), my bookings and passes (M5, M6), sign-in (M2) | The other half of the daily loop. Phone first. |
-| 3. Set-up | Schedule (S4, S5), catalog (S8), desk sale (S9) | What makes the week bookable and sellable. |
+| 3. Set-up | Schedule (S4, S5), catalog (S8), desk sale (S9), products and stock (S17) | What makes the week bookable and sellable. |
 | 4. Month end | Money (S10), payroll (S11), reports (S12), staff (S13), settings (S14), teacher view (S15) | Used weekly or monthly. |
 
 Development starts on a batch only once its designs are validated.

@@ -1,6 +1,6 @@
 # Tend — feature definition, V1
 
-**Status:** draft 1, for Albert to validate · **Date:** 2026-11-21
+**Status:** draft 2, for Albert to validate · **Date:** 2026-11-21
 **Inputs:** Orvys `product-spec.md`, `bsport-inventory.md` (walk of TUBA's live back office, 20 Nov 2026), `admin-ux-analysis.md` (jobs J1–J8).
 
 This is the only planning document for now. Order of work: **features (this file) → designs → validation → development.** Nothing is built before its design is validated.
@@ -52,6 +52,7 @@ Three surfaces. `S` = staff back office, `M` = member web, `P` = platform (no sc
 | S13 | **Staff and roles** | Invite by email. Four roles: Owner, Manager, Front desk, Teacher. Role change in a dialog; Owner changes are confirmed. | J6 | Used |
 | S14 | **Settings** | One page each for: studio details, rooms, booking rules, waitlist, invoices and tax, messages. | — | Used (22 pages there) |
 | S15 | **Teacher view** | A teacher sees their own classes and rosters, and marks attendance. Phone first. | J2 | Used |
+| S16 | **Inbox** | One shared queue for member requests. Emails to the studio address arrive in it and are answered from it. Requests from the desk, phone, WhatsApp and Instagram are logged by hand in a few seconds. Each request has an owner, a status (open, waiting, done) and its age; open requests older than 24 hours show on Today. The member's passes and bookings sit beside the conversation, so pause, extend, cancel and credit back (S7) are done without leaving it. Saved replies. Notes for staff. | J4 | Locked by plan |
 
 ### Member web
 
@@ -73,7 +74,8 @@ One responsive web app on the studio's address. No native app in V1 (see open de
 | P1 | **Booking rules** | Booking window, cut-off, cancellation deadline, late-cancel penalty, no double booking, pass eligibility, waitlist promotion. One set of rules for staff and members. |
 | P2 | **Payments** | Card payments, recurring subscription billing, retries on failure, booking block after repeated failure, refunds. |
 | P3 | **Invoices** | Sequential numbered invoices with VAT, credit notes on refund. |
-| P4 | **Messages** | Email only. About 12 messages, not BSport's 63: account, booking confirmed / cancelled / reminder, waitlist offer, class cancelled or moved, receipt, payment failed, pass expiring, renewal. |
+| P4 | **Messages** | Outgoing email only. About 12 messages, not BSport's 63: account, booking confirmed / cancelled / reminder, waitlist offer, class cancelled or moved, receipt, payment failed, pass expiring, renewal. |
+| P4b | **Incoming email** | Mail sent to the studio address is received, matched to a member by sender address, and threaded with replies. Needed by S16. |
 | P5 | **Record of changes** | Who did what and when, for every money, pass, booking and role change. |
 | P6 | **Move from BSport** | One import for TUBA: members, active passes with credits left, subscriptions, future bookings, timetable. Run once, checked by hand. Not a product feature. |
 | P7 | **Privacy** | Member data export and erasure, consent record, EU hosting. |
@@ -94,7 +96,8 @@ Decided out because TUBA does not use it, or can run a week without it.
 | Gift cards, webshop, packs, instalments, expenses | Not used or one item. |
 | Appointments / private sessions | One service, lightly used. See D4. |
 | Marketing: campaigns, segments, automations, referrals | Two workflows active. See D5. |
-| Staff inbox, WhatsApp, SMS, push | Requests arrive by email, WhatsApp, phone, Instagram and at the desk. Tend does the action (S7), not the mailbox. |
+| WhatsApp, Instagram and SMS connected to the inbox; push | The inbox (S16) receives email and takes the other channels as hand-logged requests. Connecting WhatsApp or Instagram needs Meta business accounts and approval. See D10. |
+| Replies drafted by AI | Second release, with the AI front desk. |
 | Member self-serve pause and cancel | Staff do it in one click (S7). Self-serve comes second. |
 | Custom forms and waivers | See D6. |
 | Tags as eligibility, linked profiles, custom dashboards, 26 other reports | Not needed for the week. |
@@ -117,17 +120,21 @@ Each one changes scope or design. Recommendation given where there is a basis fo
 | D6 | Does TUBA require a signed waiver or health form at sign-up? | Unknown. If yes, one fixed consent checkbox in M2, no form builder. |
 | D7 | Which languages do staff and members need on day one? | Unknown. |
 | D8 | Payroll in V1, or keep the monthly run in a spreadsheet from an export for the first months? | Export first. It removes S11 from the gate without blocking the switch. |
+| D10 | Inbox channels: is email plus hand-logging enough for V1, or must WhatsApp messages arrive in the inbox by themselves? | Email plus hand-logging. WhatsApp connected is the first addition after the switch. Unknown: how the volume splits across the four channels today. |
+| D11 | Which address do members write to today, and can its mail be forwarded to Tend? | Unknown. Decides how P4b is set up. |
 | D9 | Late-cancel penalty at TUBA: credit lost, a fee, or both? No-show the same? | Unknown. Decides P1 and the M5 cancel screen. |
 
 ---
 
 ## 5. Design phase
 
-Designs are HTML pages in `design/`, built with the Base tokens, as Base does. Each batch is validated before the next starts.
+Designs are on a design canvas (an artifact), built with the Base tokens. Each batch is validated before the next starts.
+
+Batch 1 canvas: https://claude.ai/artifact/D3uGzGLt9KQJD98PM9vMvh
 
 | Batch | Screens | Why this order |
 |---|---|---|
-| 1. Desk | Shell and navigation, member search (S1), Today (S2), class roster (S3), member profile (S6) with pass actions (S7) | The screens used every hour. If these are wrong, nothing else matters. |
+| 1. Desk and inbox | Shell and navigation, member search (S1), Today (S2), class roster (S3), member profile (S6) with pass actions (S7), inbox (S16) | The screens used every hour. If these are wrong, nothing else matters. **Drawn, awaiting validation.** |
 | 2. Member | Timetable (M1), book and buy (M3, M4), my bookings and passes (M5, M6), sign-in (M2) | The other half of the daily loop. Phone first. |
 | 3. Set-up | Schedule (S4, S5), catalog (S8), desk sale (S9) | What makes the week bookable and sellable. |
 | 4. Month end | Money (S10), payroll (S11), reports (S12), staff (S13), settings (S14), teacher view (S15) | Used weekly or monthly. |

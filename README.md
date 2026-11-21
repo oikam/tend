@@ -5,4 +5,4 @@ A restart of Orvys with a narrower first release and designs validated before an
 
 **Stage:** feature definition. See [`docs/features.md`](docs/features.md).
 
-Order of work: features → designs (`design/`, Base design system) → validation → development.
+Order of work: features → designs (design canvas, Base design system) → validation → development.

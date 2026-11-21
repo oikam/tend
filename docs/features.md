@@ -72,7 +72,7 @@ One responsive web app on the studio's address. No native app in V1 (see open de
 
 | # | Feature | What it does |
 |---|---|---|
-| P1 | **Booking rules** | Booking window, cut-off, cancellation deadline, late-cancel penalty, no double booking, pass eligibility, waitlist promotion. No booking without a pass that covers the class: at the desk, staff sell first, then book. A credit is taken when the class is booked and returned on a cancel in time. One set of rules for staff and members. |
+| P1 | **Booking rules** | Booking window, cut-off, cancellation deadline, late-cancel penalty, no double booking, pass eligibility, waitlist promotion. No booking without a pass that covers the class: at the desk, staff sell first, then book. A credit is taken when the class is booked and returned on a cancel in time. When several passes cover a class, the pass is chosen at booking: preselected (unlimited subscription first, otherwise the pass that ends soonest) and changeable. Staff can change the pass used on a booking afterwards, also after the class, in one step that returns the credit to the first pass and takes it from the second. One set of rules for staff and members. |
 | P2 | **Payments** | Card payments, recurring subscription billing, retries on failure, booking block after repeated failure, refunds. |
 | P3 | **Invoices** | Sequential numbered invoices with VAT, credit notes on refund. |
 | P4 | **Messages** | Outgoing email only. About 12 messages, not BSport's 63: account, booking confirmed / cancelled / reminder, waitlist offer, class cancelled or moved, receipt, payment failed, pass expiring, renewal. |

@@ -1,6 +1,6 @@
 # Tend — feature definition, V1
 
-**Status:** draft 4, for Albert to validate · **Date:** 2026-11-23 · synced with the design canvas (version 85)
+**Status:** draft 5, for Albert to validate · **Date:** 2026-11-24 · synced with the design canvas (version 94)
 **Inputs:** Orvys `product-spec.md`, `bsport-inventory.md` (walk of TUBA's live back office, 20 Nov 2026), `admin-ux-analysis.md` (jobs J1–J8).
 
 This is the only planning document for now. Order of work: **features (this file) → designs → validation → development.** Nothing is built before its design is validated.
@@ -54,7 +54,7 @@ Three surfaces. `S` = staff back office, `M` = member web, `P` = platform (no sc
 | S15 | **Teacher view** | A teacher sees their own classes and rosters, and marks attendance. Phone first. | J2 | Used |
 | S16 | **Inbox** | One shared queue for member requests. Emails to the studio address arrive in it and are answered from it. Requests from the desk, phone, WhatsApp and Instagram are logged by hand in a few seconds. Each request has an owner, a status (open, waiting, archived) and its age; open requests older than 24 hours raise a notification (S2). Replies have basic formatting (bold, italic, lists, links) and file attachments. The member's passes and bookings sit beside the conversation, so pause, extend, cancel and credit back (S7) are done without leaving it. Saved replies. Notes for staff. | J4 | Locked by plan |
 | S19 | **Notes and documents** | Per member. Notes for staff (a note can be shown to teachers on the roster). Documents: waiver, medical certificate, prenatal clearance and the like, as PDF or photo, with an optional end date; restricted documents are visible to fewer roles; an expired document is shown in red. | J1 | Partly used |
-| S17 | **Products and stock** | Merch sold at the desk. A product has a name, a price, a tax rate and a number in stock; sizes are separate products. A sale takes one off, a refund puts it back, staff correct the count with a reason. A product at zero can still be sold after a confirmation. Sales show on the member's purchases and invoices and as their own line in the revenue report. | J8 | Lightly used (one webshop item) |
+| S17 | **Products and stock** | Merch sold on site, online (app and website), or both; set per product. A product has an image, a name, a price, a tax rate, a status (active or inactive; an inactive product cannot be sold anywhere) and a number in stock; sizes are separate products. A sale takes one off, a refund puts it back, staff correct the count with a reason. A product at zero can still be sold after a confirmation. Sales show on the member's purchases and invoices and as their own line in the revenue report. | J8 | Lightly used (one webshop item) |
 | S18 | **Establishments and rooms** | A studio has one or more establishments (addresses), each with one or more rooms. Every class is in one room of one establishment. The schedule shows one establishment at a time; with a single establishment the choice is hidden. Decided 21 Nov 2026. | J5 | Used (Venues) |
 
 ### Member web
@@ -69,6 +69,7 @@ One responsive web app on the studio's address. No native app in V1 (see open de
 | M4 | **Buy** | Buy a pass or start a subscription by card. Promotion code. Saved card. |
 | M5 | **My bookings** | Upcoming and past. Cancel within the deadline; a late cancel shows what it costs before confirming. |
 | M6 | **My passes** | Credits left, end date, next payment date, invoices, update card. |
+| M7 | **Shop** | Buy merch on the app or website, paid by card, collected at the studio (no shipping). Shows only active products marked as sold online and in stock; an online order takes the item off the stock at once. Decided 24 Nov 2026. |
 
 ### Platform
 
@@ -96,7 +97,7 @@ Decided out because TUBA does not use it, or can run a week without it.
 | Spot and apparatus booking (pick your reformer) | TUBA's BSport plan has one number, "total spots". Second release. |
 | Several studios as separate customers, platform master admin, take rates | One studio as customer. Built when studio two signs. Several establishments inside one studio are in V1 (S18). |
 | Website builder, on-demand video, livestream | Not used. |
-| Gift cards, selling merch online, packs, instalments, expenses, purchase orders, barcodes | Not used. Merch at the desk with stock is in V1 (S17), decided 21 Nov 2026. |
+| Gift cards, shipping merch, packs, instalments, expenses, purchase orders, barcodes | Not used. Merch with stock is in V1, on site (S17, 21 Nov 2026) and online with pickup at the studio (M7, 24 Nov 2026). |
 | Appointments / private sessions | One service, lightly used. See D4. |
 | Marketing: campaigns, segments, automations, referrals | Two workflows active. See D5. |
 | WhatsApp, Instagram and SMS connected to the inbox; push | The inbox (S16) receives email and takes the other channels as hand-logged requests. Connecting WhatsApp or Instagram needs Meta business accounts and approval. See D10. |
@@ -127,7 +128,7 @@ Each one changes scope or design. Recommendation given where there is a basis fo
 | D11 | Which address do members write to today, and can its mail be forwarded to Tend? | Unknown. Decides how P4b is set up. |
 | D9 | Late-cancel penalty at TUBA: credit lost or a fee? No-show the same? | Partly decided 23 Nov 2026: late cancel exists, and the penalty is one or the other, never both. Still unknown: which one TUBA uses, the deadline, and whether a no-show costs the same. |
 | D12 | May staff book a waitlisted member over capacity at any time, or only when a spot is free? | Assumed: any time, after a confirmation. |
-| D13 | Merch at the desk only, or also on the member booking site? | Desk only. |
+| D13 | Merch at the desk only, or also on the member booking site? | **Decided 24 Nov 2026 (Albert): both.** Each product is sold on site, online, or both. Open: how staff see and hand over online orders, and what happens when an order is not collected. |
 | D14 | Keep the one-tap "Replace for this class" on the roster, or change teachers only through "Edit class"? | Keep it. |
 | D15 | Several establishments: included for every studio, or a higher pricing tier? Albert, 21 Nov: not decided yet. | Build it for everyone; a tier only limits how many a studio may create, so the decision can wait. |
 | D16 | With several establishments: are passes valid everywhere or per establishment, and do front desk staff see only their own? | Unknown. Assumed: passes valid everywhere, staff see all. |
@@ -158,7 +159,7 @@ Batch 1 canvas: https://claude.ai/artifact/D3uGzGLt9KQJD98PM9vMvh
 | Batch | Screens | Why this order |
 |---|---|---|
 | 1. Desk and inbox | Shell and navigation, member search (S1), notifications (S2), schedule (S4, landing), class roster before and after the roll call (S3), member profile with its tabs, booking menu, cancel, waive penalty and record a payment (S6), pass actions (S7), inbox (S16), notes and documents (S19) | The screens used every hour. If these are wrong, nothing else matters. **Drawn, being reviewed with Albert.** |
-| 2. Member | Timetable (M1), book and buy (M3, M4), my bookings and passes (M5, M6), sign-in (M2) | The other half of the daily loop. Phone first. |
+| 2. Member | Timetable (M1), book and buy (M3, M4), my bookings and passes (M5, M6), shop (M7), sign-in (M2) | The other half of the daily loop. Phone first. |
 | 3. Set-up | Class edit and new class with repeat (S4, S5), catalog (S8), desk sale (S9), products and stock (S17). **Class forms, desk sale and products list drawn early, on the Batch 1 canvas.** Still to draw: change-pass pop-up, class types, passes, subscriptions, promotion codes. | What makes the week bookable and sellable. |
 | 4. Month end | Money (S10), payroll (S11), reports (S12), staff (S13), settings (S14), teacher view (S15) | Used weekly or monthly. |
 
